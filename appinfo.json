@@ -1,0 +1,18 @@
+{
+    "versionLabel": "1.0",
+    "uuid": "6a9eae82-3635-431a-899d-72b42795f879",
+    "appKeys": {},
+    "longName": "Multi-Base Clock",
+    "versionCode": 1,
+    "capabilities": [
+        ""
+    ],
+    "shortName": "Mutliary",
+    "companyName": "Evan Bernstein",
+    "watchapp": {
+        "watchface": true
+    },
+    "resources": {
+        "media": []
+    }
+}
