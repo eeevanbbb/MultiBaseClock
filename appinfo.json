@@ -10,7 +10,7 @@
     "shortName": "Mutliary",
     "companyName": "Evan Bernstein",
     "watchapp": {
-        "watchface": true
+        "watchface": false
     },
     "resources": {
         "media": []
