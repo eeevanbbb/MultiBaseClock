@@ -12,7 +12,6 @@ static void handle_second_tick(struct tm *tick_time, TimeUnits units_changed);
 static void analog_window_config_provider(void *context);
 
 //With help from: http://www.phanderson.com/C/baseprnt.html
-//This method has an issue where it doesn't print out 0
 char * convert_to_base(int num, int base) {
 	
 	char base_digits[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
@@ -24,6 +23,17 @@ char * convert_to_base(int num, int base) {
 		converted_number[index] = num % base;
 		num = num / base;
 		++index;
+	}
+	
+	//Print 0 for 0
+	if (index == 0) {
+		converted_number[0] = 0;
+		index++;
+	}
+	//Print a leading 0 for one-digit numbers
+	if (index == 1) {
+		converted_number[1] = 0;
+		index++;
 	}
 	
 	/* now print the result in reverse order */
