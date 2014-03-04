@@ -69,12 +69,11 @@ static void down_button_handler(ClickRecognizerRef recognizer, void *context) {
 }
 
 void analogLayer_update_callback(Layer *myLayer, GContext *ctx) {
-		
-	graphics_context_set_stroke_color(ctx, GColorWhite);
-	
+			
 	GPoint center = GPoint(72,84);
 	float radius = 60;
-		
+	
+	graphics_context_set_stroke_color(ctx, GColorWhite);
 	graphics_draw_circle(ctx, center, radius);
 	
 	time_t now = time(NULL);
@@ -115,6 +114,16 @@ void analogLayer_update_callback(Layer *myLayer, GContext *ctx) {
 
 	graphics_context_set_stroke_color(ctx, GColorWhite);
 	graphics_draw_line(ctx, secondHand, center);
+	
+	
+	//inner circle
+	/* This inner circle will represent the magnitude of the second hand; which section of the minute it is currently ticking for. */
+	int progress = current_time->tm_sec / base;
+	int maxprogress = 60 / base + 1;
+	float inner_radius = radius * ((float)progress / (float)maxprogress);
+	
+	graphics_context_set_stroke_color(ctx, GColorWhite);
+	graphics_draw_circle(ctx, center, inner_radius);
 }
 
 //Is this method actually necessary? What cleanup is done automatically?
